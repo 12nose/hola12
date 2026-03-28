@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación Normativa</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        /* Menú superior */
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: #555;
+            color: #007BFF;
+        }
+
+        /* Contenedor de Secciones */
+        .content-section {
+            display: none; /* Oculto por defecto */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            padding: 20px;
+            gap: 15px;
+        }
+
+        /* Sección activa */
+        .content-section.active {
+            display: flex;
+        }
+
+        /* Estilo de botones verticales */
+        .btn-vertical {
+            width: 250px;
+            padding: 15px;
+            text-align: center;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: transform 0.2s, background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-vertical:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        /* Estilo específico para la lista de integrantes */
+        .lista-integrantes {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .integrante-item {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #007BFF;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-weight: bold;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="main-nav">
+        <a onclick="showSection('ae111')" class="active">AE_111</a>
+        <a onclick="showSection('ae121')">AE_121</a>
+        <a onclick="showSection('ae211')">AE_211</a>
+        <a onclick="showSection('ae221')">AE_221</a>
+        <a onclick="showSection('integrantes')">Integrantes</a>
+    </nav>
+
+    <div id="ae111" class="content-section active">
+        <h1 style="color: #333;">Aplicación de la normativa informativa (AE_111)</h1>
+        <a href="CA.html" class="btn-vertical">Contenido A</a>
+        <a href="CB.html" class="btn-vertical">Contenido B</a>
+        <a href="CC.html" class="btn-vertical">Contenido C</a>
+        <a href="Actividad_1.html" class="btn-vertical">Actividad 1</a>
+    </div>
+
+    <div id="ae121" class="content-section">
+        <h1>Sección AE_121</h1>
+        <p>Contenido en construcción para AE_121...</p>
+    </div>
+
+    <div id="ae211" class="content-section">
+        <h1>Sección AE_211</h1>
+        <p>Contenido en construcción para AE_211...</p>
+    </div>
+
+    <div id="ae221" class="content-section">
+        <h1>Sección AE_221</h1>
+        <p>Contenido en construcción para AE_221...</p>
+    </div>
+
+    <div id="integrantes" class="content-section">
+        <h1 style="color: #333;">Integrantes del Equipo</h1>
+        <ul class="lista-integrantes">
+            <li class="integrante-item">1. Rigo Adrián Dzib Pat</li>
+            <li class="integrante-item">2. Sandra Sarai Pat Itza</li>
+            <li class="integrante-item">3. Neivy Grisel Poot Cahum</li>
+            <li class="integrante-item">4. Estrella Abigail Un Couoh</li>
+            <li class="integrante-item">5. Zeidy Jhoselin Cano Canche</li>
+            <li class="integrante-item">6. María Guadalupe Xiu Uitzil</li>
+        </ul>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // 1. Ocultar todas las secciones
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 2. Quitar clase active de los botones del nav
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // 3. Mostrar la sección seleccionada
+            document.getElementById(sectionId).classList.add('active');
+
+            // 4. Marcar como activo el botón clickeado
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
